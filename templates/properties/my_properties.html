@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block head_title %} My Properties {% endblock %}
+{% block content %}
+
+
+
+<div class="content-wrapper ml-0" style="min-height: 70px; height: 100vh;">
+    <div class="container">
+     <div class="row justify-content-md-center">
+         <div class="col">
+             
+             <div class="content-header">
+                 <div class="container-fluid">
+                     <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">My Properteis</h1>
+                        </div>
+                        <div class="col text-right">
+                            <a href="{% url 'add_property' %}" class="btn btn-danger">+ Add Property</a>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+
+             
+             <section class="content">
+                <div class="container-fluid overflow-auto">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Available From</th>
+                            <th scope="col">Building Size</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for property in properties %}
+                            <tr>
+                                <td scope="row">{{forloop.counter}}</td>
+                                <td>{{property.property_name}}</td>
+                                <td>{{property.available_from}}</td>
+                                <td>{{property.building_size}}</td>
+                                <td>{{property.address}}</td>
+                                <td><a href="" title="Edit"><i class="fas fa-edit"></i></a></td>
+                              </tr>
+                            {% endfor %}
+
+                            {% if not properties.count %}
+                            <tr class="text-center">
+                                <td colspan="6"> You don't have any proeprties yet, <a href="{% url 'add_property' %}">Click to Add one</a>.</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                      </table>
+                
+                </div>
+            </section>
+            
+
+
+            </div>
+        </div>
+       </div>
+    </div>
+
+
+{% endblock %}
