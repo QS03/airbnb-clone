@@ -4,6 +4,7 @@ django-address==0.2.5
 django-autoslug==1.9.8
 django-better-admin-arrayfield==1.4.2
 django-crispy-forms==1.10.0
+gunicorn==20.0.4
 psycopg2==2.8.6
 python-decouple==3.4
 pytz==2020.5
