@@ -5,7 +5,11 @@
 {% load static %}
 {% block head_title %}{% if property.property_name %}{{property.property_name}}{% else %}{{property.address}}{% endif %}{% endblock %}
 {% block content %}
-
+<style>
+    .img-w{
+        width: 300px;
+    }
+</style>
 <link rel="stylesheet" href="{% static 'css/property_details.css' %}"/>
     <div class="content-wrapper ml-0" style="min-height: 70px;">
        <div class="container">
