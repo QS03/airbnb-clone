@@ -25,3 +25,12 @@ class AddPropertyForm(forms.ModelForm):
         return property_obj
 
 
+class EditPropertyForm(forms.ModelForm):
+
+    class Meta:
+        model = Property
+        fields = ('property_name', 'address', 'description', 'available_from', 'building_size', 'images', 'is_active')
+        
+    
+    def __init__(self, *args, **kwargs):
+        super(EditPropertyForm, self).__init__(*args, **kwargs)

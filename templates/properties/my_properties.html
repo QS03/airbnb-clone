@@ -13,10 +13,10 @@
                  <div class="container-fluid">
                      <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">My Properteis</h1>
+                            <h1 class="m-0 text-dark">My Houses</h1>
                         </div>
                         <div class="col text-right">
-                            <a href="{% url 'add_property' %}" class="btn btn-danger">+ Add Property</a>
+                            <a href="{% url 'add_property' %}" class="btn btn-danger">+ Add House</a>
                         </div>
                      </div>
                  </div>
@@ -45,7 +45,7 @@
                                 <td>{{property.available_from}}</td>
                                 <td>{{property.building_size}}</td>
                                 <td>{{property.address}}</td>
-                                <td><a href="" title="Edit"><i class="fas fa-edit"></i></a></td>
+                                <td><a href="{% url 'edit_property' property.slug %}" title="Edit"><i class="fas fa-edit"></i></a></td>
                               </tr>
                             {% endfor %}
 
