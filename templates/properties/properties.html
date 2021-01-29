@@ -26,6 +26,9 @@
         height: 1rem;
         background: white;
     }
+    .img-h{
+        height: 190px;
+    }
 </style>
     <div class="content-wrapper ml-0" style="min-height: 70px;">
        <div class="container">
@@ -50,7 +53,7 @@
                             {% for property in properties %}
                                 <div class="col-lg-3 col-6 mb-3">
                                     <div class="card h-100">{{property.image}}
-                                        <img class="card-img-top" src="{% if property.images %}{{property.images.url}}{% endif %}" alt="Card image cap">
+                                        <img class="card-img-top img-h" src="{% if property.images %}{{property.images.url}}{% endif %}" alt="Card image cap">
                                         <div class="card-body">
                                             <h5 class="card-title font-weight-bold">{{property.property_name}}</h5>
                                             <p class="card-text position-relative truncate-overflow">{{property.description}}</p>
