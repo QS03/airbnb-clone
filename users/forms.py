@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from .models import Message, Chat
 
 class SignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -40,4 +41,38 @@ class UpdateProfileForm(forms.Form):
         user.save()
         return user
 
+class CreateMessageForm(forms.ModelForm):
 
+    class Meta:
+        model = Message
+        fields = ('chat', 'message')
+        
+    
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super(CreateMessageForm, self).__init__(*args, **kwargs)
+    
+    def save(self):
+        message = Message(**self.cleaned_data)
+        message.sender = self.user
+        message.save()
+        return message
+
+class CreateChatForm(forms.ModelForm):
+
+    class Meta:
+        model = Chat
+        fields = ('topic',)
+        
+    
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        self.participants = kwargs.pop('participants')
+        super(CreateChatForm, self).__init__(*args, **kwargs)
+    
+    def save(self):
+        chat = Chat(**self.cleaned_data)
+        chat.owner = self.user
+        chat.save()
+        chat.participants.set(self.participants)
+        return chat

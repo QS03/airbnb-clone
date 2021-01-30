@@ -34,7 +34,14 @@
                                   
                                   <div class="preview-pic tab-content">
                                     <div class="tab-pane active" id="pic-1"><img class="img-w" src="{% if property.images %}{{property.images.url}}{% endif %}"></div>
-
+                                    <div class="mt-2">
+                                        <form action="{% url 'create_chat' %}" method="POST">
+                                          {% csrf_token %}
+                                          <input hidden type="text" name='participants' value="{{property.owner.id}}">
+                                          <input hidden type="text" name='topic' value="{% if property.property_name %}{{property.property_name}}{% else %}{{property.address}}{% endif %}">
+                                          <button class="btn btn-danger" type="submit"> Contact Owner </button>
+                                        </form>
+                                      </div>
                                   </div>
                               </div>
                               <div class="details col-md-6">
